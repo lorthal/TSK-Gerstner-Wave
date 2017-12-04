@@ -23,7 +23,7 @@
 			float _Amplitude, A;
 			float _Length, L;
 			float2 _Direction, Dir;
-			float _Speed, S;
+			float _Speed, S, CrestVelocity;
 
 			sampler2D _MainTex;
 
@@ -33,7 +33,7 @@
 
 			float2 directionalWave1, directionalWave2;
 
-			float time;
+			float time, _DeltaTime;
 
 			struct Input
 			{
@@ -61,12 +61,14 @@
 
 			void vert(inout appdata_full v)
 			{
-				S = 5;
-				A = ((0.27 * S * S) / G) / 2;
-				L = ((S * S) * 2 * PI) / G;
-				Dir = float2(1, 0);
+				// S = 5;
+				// A = ((0.27 * S * S) / G) / 2;
+				// L = ((S * S) * 2 * PI) / G;
+				// Dir = float2(1, 0); 
 
-				_Length = ((_Speed * _Speed) * 2 * PI) / G;
+				_Length = _Speed * _DeltaTime * 100;
+
+				CrestVelocity = sqrt((G * _Length) / (2 * PI));
 
 				_Amplitude = ((0.27 * _Speed * _Speed) / G) / 2;
 
@@ -78,13 +80,13 @@
 				}
 
 				F1 = (2 * PI) / _Length;
-				F2 = (2 * PI) / L;
+				// F2 = (2 * PI) / L;
 
-				phaseConst1 = _Speed * (2 * PI) / _Length;
-				phaseConst2 = S * (2 * PI) / L;
+				phaseConst1 = CrestVelocity * (2 * PI) / _Length;
+				// phaseConst2 = S * (2 * PI) / L;
 
 				Q1 = sqrt(G * ((2 * PI) / _Length));
-				Q2 = sqrt(G * ((2 * PI) / L));
+				// Q2 = sqrt(G * ((2 * PI) / L));
 
 				northVertex = v.vertex + float3(0, 0, 1);
 				southVertex = v.vertex + float3(0, 0, -1);
@@ -101,14 +103,14 @@
 
 				CalculateGhostVertices(directionalWave1);
 
-				directionalWave2 = float2(Dir.x, Dir.y);
+				// directionalWave2 = float2(Dir.x, Dir.y);
 
 				//wave 2
-				v.vertex.x += (Q2 * A) * directionalWave2.x * cos((F2 * dot(directionalWave2, v.vertex.xz)) + (phaseConst2 * time));
-				v.vertex.y += A * sin((F2 * dot(directionalWave2, v.vertex.xz)) + (phaseConst2 * time));
-				v.vertex.z += (Q2 * A) * directionalWave2.y * cos((F2 * dot(directionalWave2, v.vertex.xz)) + (phaseConst2 * time));
+				// v.vertex.x += (Q2 * A) * directionalWave2.x * cos((F2 * dot(directionalWave2, v.vertex.xz)) + (phaseConst2 * time));
+				// v.vertex.y += A * sin((F2 * dot(directionalWave2, v.vertex.xz)) + (phaseConst2 * time));
+				// v.vertex.z += (Q2 * A) * directionalWave2.y * cos((F2 * dot(directionalWave2, v.vertex.xz)) + (phaseConst2 * time));
 
-				CalculateGhostVertices(directionalWave2);
+				// CalculateGhostVertices(directionalWave2);
 
 				//Get a vector from one neighbour vertex to another, this gives us a base from which to calculate the normal
 				float3 northSouth = northVertex - southVertex;
@@ -122,7 +124,7 @@
 			void surf(Input i, inout SurfaceOutput o)
 			{
 				float2 uvs = i.uv_MainTex;
-				float disp = time * _Speed / 250.0;
+				float disp = time * CrestVelocity / 250.0;
 				uvs += _Direction.xy * disp;
 
 				fixed4 tex = tex2D(_MainTex, uvs);
