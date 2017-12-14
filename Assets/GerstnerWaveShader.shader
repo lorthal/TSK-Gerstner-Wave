@@ -5,6 +5,7 @@
 		_MainTex("Texture", 2D) = "white" {}
 		_HeightMap("Height Map", 2D) = "white" {}
 		_HeightMapScale("Height map scale", float) = 1.0
+		_NormalMap("Normal map", 2D) = "white" {}
 		_Color("Color", color) = (1,1,1,1)
 		_Amplitude("Wave _Amplitude", float) = 1.0
 		_Length("Wave Length", float) = 10.0
@@ -27,7 +28,7 @@
 			float2 _Direction, Dir;
 			float _Speed, S, CrestVelocity;
 
-			sampler2D _HeightMap, _MainTex;
+			sampler2D _HeightMap, _MainTex, _NormalMap;
 
 			float4 _Color;
 
@@ -45,6 +46,7 @@
 			{
 				float2 uv_HeightMap;
 				float2 uv_MainTex;
+				float2 uv_NormalMap;
 			};
 
 			void CalculateGhostVertices(float2 direction)
@@ -137,13 +139,15 @@
 				float2 uvs = i.uv_MainTex;
 				// float disp = time * CrestVelocity / 250.0;
 				// uvs += _Direction.xy * disp;
+				float3 normal = normalize(tex2D(_NormalMap, i.uv_NormalMap).rgb * 2.0 - 1.0);
 
 				fixed4 tex = tex2D(_MainTex, uvs);
 
 				o.Albedo = tex.rgb * _Color.rgb;
 				o.Gloss = tex.a * _Color.a;
-				o.Alpha = _Color.a;
+				o.Alpha = _Color.a * tex.r;
 				o.Specular = 0.07;
+				o.Normal = normal;
 			}
 
 			ENDCG
