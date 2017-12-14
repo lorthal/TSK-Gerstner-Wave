@@ -111,7 +111,6 @@
 				eastVertex = v.vertex + float3(1, 0, 0);
 				westVertex = v.vertex + float3(-1, 0, 0);
 
-				
 				directionalWave1 = float2(_Direction.x, _Direction.y);
 
 				//wave 1
@@ -141,11 +140,19 @@
 
 			void surf(Input i, inout SurfaceOutputStandardSpecular o)
 			{
+				float2 dirNormalized = normalize(float2(_Direction.x, _Direction.y));
+
+				_Length = _Speed * _DeltaTime * 150;
+
+				CrestVelocity = sqrt((G * _Length) / (2 * PI));
+
 				float2 uvs = i.uv_MainTex;
+				uvs.x += time / 150 * CrestVelocity * dirNormalized.x;
+				uvs.y += time / 150 * CrestVelocity * dirNormalized.y;
 				// float disp = time * CrestVelocity / 250.0;
 				// uvs += _Direction.xy * disp;
-				float3 normal = normalize(tex2D(_NormalMap, i.uv_NormalMap).rgb * 2.0 - 1.0);
-				float3 spec = tex2D(_SpecularMap, i.uv_SpecularMap) * _SpecularIntensity;
+				float3 normal = normalize(tex2D(_NormalMap, uvs).rgb * 2.0 - 1.0);
+				float3 spec = tex2D(_SpecularMap, uvs) * _SpecularIntensity;
 
 				fixed4 tex = tex2D(_MainTex, uvs);
 
