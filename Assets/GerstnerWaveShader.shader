@@ -3,7 +3,9 @@
 	Properties
 	{
 		_MainTex("Texture", 2D) = "white" {}
-		//_Color("Color", color) = (1,1,1,1)
+		_HeightMap("Height Map", 2D) = "white" {}
+		_HeightMapScale("Height map scale", float) = 1.0
+		_Color("Color", color) = (1,1,1,1)
 		_Amplitude("Wave _Amplitude", float) = 1.0
 		_Length("Wave Length", float) = 10.0
 		_Direction("Wind Direction", vector) = (1,0,0)
@@ -25,7 +27,11 @@
 			float2 _Direction, Dir;
 			float _Speed, S, CrestVelocity;
 
-			sampler2D _MainTex;
+			sampler2D _HeightMap, _MainTex;
+
+			float4 _Color;
+
+			float _HeightMapScale;
 
 			float3 northVertex, southVertex, eastVertex, westVertex;
 			float F1, F2;
@@ -37,6 +43,7 @@
 
 			struct Input
 			{
+				float2 uv_HeightMap;
 				float2 uv_MainTex;
 			};
 
@@ -61,12 +68,16 @@
 
 			void vert(inout appdata_full v)
 			{
+
+				float4 heightMap = tex2Dlod(_HeightMap, float4( v.texcoord.xy, 0, 0 ));
+
+				v.vertex.y += heightMap.b * _HeightMapScale;
 				// S = 5;
 				// A = ((0.27 * S * S) / G) / 2;
 				// L = ((S * S) * 2 * PI) / G;
 				// Dir = float2(1, 0); 
 
-				_Length = _Speed * _DeltaTime * 100;
+				_Length = _Speed * _DeltaTime * 150;
 
 				CrestVelocity = sqrt((G * _Length) / (2 * PI));
 
@@ -117,21 +128,21 @@
 				float3 eastWest = eastVertex - westVertex;
 
 				//Lets get the cross product of these to get the perpindicular normal
-				float3 normals = cross(northSouth, eastWest);
+				float3 normals = cross(northSouth, eastWest) ;
 				v.normal = normalize(normals);
 			}
 
 			void surf(Input i, inout SurfaceOutput o)
 			{
 				float2 uvs = i.uv_MainTex;
-				float disp = time * CrestVelocity / 250.0;
-				uvs += _Direction.xy * disp;
+				// float disp = time * CrestVelocity / 250.0;
+				// uvs += _Direction.xy * disp;
 
 				fixed4 tex = tex2D(_MainTex, uvs);
 
-				o.Albedo = tex.rgb;
-				o.Gloss = tex.a;
-				o.Alpha = 1.0f;
+				o.Albedo = tex.rgb * _Color.rgb;
+				o.Gloss = tex.a * _Color.a;
+				o.Alpha = _Color.a;
 				o.Specular = 0.07;
 			}
 
