@@ -9,8 +9,8 @@
 		_SpecularMap("Specular map", 2D) = "white" {}
 		_SpecularIntensity("Specluar", float) = 1.0
 		_Color("Color", color) = (1,1,1,1)
-		_Amplitude("Wave _Amplitude", float) = 1.0
-		_Length("Wave Length", float) = 10.0
+		// _Amplitude("Wave _Amplitude", float) = 1.0
+		// _Length("Wave Length", float) = 10.0
 		_Direction("Wind Direction", vector) = (1,0,0)
 		_Speed("Wind Speed", float) = 5
 	}
@@ -150,7 +150,7 @@
 				fixed4 tex = tex2D(_MainTex, uvs);
 
 				o.Albedo = tex.rgb * _Color.rgb;
-				o.Alpha = _Color.a * tex.r;
+				o.Alpha = _Color.a;
 				o.Specular = spec;
 				o.Normal = normal;
 			}
