@@ -39,11 +39,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HeightMap:
-        m_Texture: {fileID: 2800000, guid: cf3a8fde7acea2548926238ec466f92f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 88d1a3a3edb119a43ad97aca0bfb40db, type: 3}
         m_Scale: {x: 15, y: 15}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: cf3a8fde7acea2548926238ec466f92f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7a15165a1ad1fc74999d97ae4977afc2, type: 3}
         m_Scale: {x: 15, y: 15}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -51,7 +51,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: 3fad4cbdeb3e3db4482bbe8c628258c0, type: 3}
+        m_Texture: {fileID: 2800000, guid: db871120374030f489ee60a77dd0b6b8, type: 3}
         m_Scale: {x: 15, y: 15}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -63,7 +63,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecularMap:
-        m_Texture: {fileID: 2800000, guid: c7a1ecac1cbf83d468ee820a4c36b953, type: 3}
+        m_Texture: {fileID: 2800000, guid: eb6a1d94a71b08c4482900fe9cd93561, type: 3}
         m_Scale: {x: 15, y: 15}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -75,7 +75,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _HeightMapScale: 1
+    - _HeightMapScale: 2.5
     - _Length: -6.82
     - _Metallic: 0
     - _Mode: 0
@@ -83,13 +83,13 @@ Material:
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SpecularIntensity: -0.5
-    - _Speed: 5
+    - _SpecularIntensity: 1
+    - _Speed: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - time: 1988.6776
+    - time: 71.458046
     m_Colors:
-    - _Color: {r: 0.75735295, g: 0.929716, b: 1, a: 0.659}
-    - _Direction: {r: 1, g: 1.48, b: 0, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 0.5019608}
+    - _Direction: {r: 0.08, g: 0.35, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

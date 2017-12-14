@@ -7,6 +7,9 @@
 
 using UnityEngine;
 using System.Collections;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class GeneratePlane : MonoBehaviour
 {
@@ -90,6 +93,10 @@ public class GeneratePlane : MonoBehaviour
         //Render the mesh
         gameObject.GetComponent<Renderer>().sharedMaterial = material;
         gameObject.GetComponent<MeshFilter>().mesh = planeMesh;
+#if UNITY_EDITOR
+        AssetDatabase.CreateAsset(planeMesh, "Assets/generated_plane.asset");
+        AssetDatabase.SaveAssets();
+#endif
     }
 
     // Update is called once per frame
