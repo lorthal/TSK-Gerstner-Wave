@@ -84,12 +84,12 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SpecularIntensity: 1
-    - _Speed: 1.6
+    - _Speed: 10
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - time: 298.40808
+    - time: 18.18107
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 0.372}
-    - _Direction: {r: 0.08, g: 0.35, b: 0, a: 0}
+    - _Direction: {r: -2.9999995, g: -2.9999995, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

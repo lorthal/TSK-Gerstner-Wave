@@ -12,5 +12,8 @@ public class MaterialTimer : MonoBehaviour
 	{
         mat.SetFloat("time", time);
         time += Time.deltaTime;
+
+
+        mat.SetFloat("_Speed", 100);
 	}
 }
