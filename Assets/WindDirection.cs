@@ -2,21 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WindDirection : MonoBehaviour {
+public class WindDirection : MonoBehaviour
+{
 
-    public GameObject Modifier;
-    public Modifier mod;
+    float speed = 80.0f;
+    Transform target;
 
-    Vector3 currentMouse, previousMouse;
-	// Use this for initialization
-	void Start () {
-        mod = Modifier.GetComponent<Modifier>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        //this.transform.rotation;
-        //currentMouse = Mouse
+    // Use this for initialization
+    void Start()
+    {
 
-	}
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            transform.Rotate(new Vector3(Input.GetAxis("Mouse X"), 0, 0) * Time.deltaTime * speed);
+        }
+    }
 }
