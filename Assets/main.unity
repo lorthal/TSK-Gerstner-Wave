@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45135963, g: 0.50034815, b: 0.56963, a: 1}
+  m_IndirectSpecularColor: {r: 0.45135957, g: 0.5003475, b: 0.56962913, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -213,14 +213,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 355215138}
-  m_LocalRotation: {x: 0, y: 0, z: 0.79621327, w: 0.6050161}
-  m_LocalPosition: {x: 86.2, y: 16.23, z: 65.55}
-  m_LocalScale: {x: 111.00003, y: 1111.0005, z: 1111}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 85, y: 10, z: 100}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1405079232}
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 105.54001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &621818661
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,7 +467,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 976951054}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 181.5, y: 102, z: 0}
+  m_LocalPosition: {x: 480, y: 270, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1209385086}
@@ -505,15 +505,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8a8a027685e08354bb62322f73411075, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8a8a027685e08354bb62322f73411075, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.7933534
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8a8a027685e08354bb62322f73411075, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.6087614
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8a8a027685e08354bb62322f73411075, type: 3}
       propertyPath: m_RootOrder
@@ -521,19 +521,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8a8a027685e08354bb62322f73411075, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 111
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8a8a027685e08354bb62322f73411075, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 1111
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8a8a027685e08354bb62322f73411075, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 1111
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8a8a027685e08354bb62322f73411075, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 105.54
+      value: 105
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8a8a027685e08354bb62322f73411075, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -599,7 +599,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1209385085}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 102, z: 0}
+  m_LocalPosition: {x: 0, y: 270, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1555510}
@@ -773,8 +773,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mat: {fileID: 2100000, guid: 38c22edb60440c842a4fe73729a43ee8, type: 2}
+  arrow: {fileID: 355215138}
   speedSlider: {fileID: 1209385085}
   txt: {fileID: 1694582545}
+  dir: {x: 0, y: 0, z: 0}
 --- !u!1 &1270788281
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,7 +1018,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1694582543}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 177.2, y: 97.5, z: 0}
+  m_LocalPosition: {x: 177.2, y: 265.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 976951058}
