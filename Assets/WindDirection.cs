@@ -19,7 +19,7 @@ public class WindDirection : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            transform.Rotate(new Vector3(Input.GetAxis("Mouse X"), 0, 0) * Time.deltaTime * speed);
+            transform.Rotate(new Vector3(-Input.GetAxis("Mouse X"), 0, 0) * Time.deltaTime * speed);
         }
     }
 }
